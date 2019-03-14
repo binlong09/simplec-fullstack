@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 
 export class Home extends Component {
   render() {
+    const { user, isAuthenticated } = this.props.auth;
+
     return (
       <div>
-        <h3>Home</h3>
+        { !isAuthenticated ? <Redirect to='/' />
+        :
+        <strong>{ user ? `Welcome ${user.name}` : ''}</strong>}
       </div>
     )
   }
 }
 
-export default Home
+const mapStateToProps = state => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps, null)(Home);
