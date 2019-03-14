@@ -31,7 +31,7 @@ export class RegisterModal extends Component {
           onOk={this.props.onOk}
           onCancel={this.props.onCancel}
         >
-          <Form.Item>
+          <Form.Item label="Email">
             <Input
               prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email"
               id="email"
