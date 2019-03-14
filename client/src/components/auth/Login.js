@@ -14,6 +14,7 @@ export class Login extends Component {
   state = {
     registerVisible: false,
     forgotVisible: false,
+    registerSuccessful: false,
     email: '',
     password: '',
     msg: null
@@ -83,6 +84,12 @@ export class Login extends Component {
     })
   }
 
+  registerSuccessful = e => {
+    this.setState({
+      registerSuccessful: true
+    })
+  }
+
   handleForgot = e => {
     this.setState({
       forgotVisible: true
@@ -115,6 +122,7 @@ export class Login extends Component {
           visible={this.state.registerVisible}
           onCancel={this.handleRegisterCancel}
           onOk={this.handleForgotOk}
+          registerSuccessful={this.registerSuccessful}
         />
         <ForgotModal
           visible={this.state.forgotVisible}
@@ -130,6 +138,7 @@ export class Login extends Component {
           </div>
           <Form className="login-form">
             { this.state.msg ? <Alert type="error" message={this.state.msg}/> : null }
+            { this.state.registerSuccessful ? <Alert type="success" message="Registered Successfully"/> : null }
             <Form.Item label="Email">
               <Input
                 prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} type="email" placeholder="Email"

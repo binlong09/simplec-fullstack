@@ -41,7 +41,7 @@ export class RegisterModal extends Component {
       e.preventDefault();
 
       const { name, email, password } = this.state;
-      const { isAuthenticated } = this.props;
+      // const { isAuthenticated } = this.props;
 
       // Create user object
       const newUser = {
@@ -50,8 +50,10 @@ export class RegisterModal extends Component {
         password
       }
 
-      await this.props.register(newUser);
-      if (isAuthenticated) { await this.props.history.push('/Home') }
+      this.props.register(newUser);
+      await this.props.onCancel()
+      await this.props.registerSuccessful();
+      // if (isAuthenticated) { await this.props.history.push('/Home') }
     }
 
   render() {
