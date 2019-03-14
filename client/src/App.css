@@ -23,6 +23,13 @@
   padding: 1rem;
   height: 100vh
 }
+/*
+***** Page: Authentification *****
+**/
+.auth {
+  text-align: center;
+  margin-top: 20%
+}
 
 .auth-headerText {
   font-size: 2rem;
@@ -43,4 +50,66 @@
 
 .login-form-forgot {
   float: right;
+  font-style: oblique
+}
+
+/*
+***** Page: Home *****
+**/
+.home-navbar_wrapper {
+  display: flex;
+  width: 100%;
+  background-color: brown;
+  position: fixed;
+  z-index: 1
+}
+
+.home-todoList_calendar_wrapper {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  background-color: aqua;
+  padding-top: 50px;
+}
+
+.home-todoList_wrapper {
+  width: 25%;
+  background-color: red;
+}
+
+.home-calendar_wrapper {
+  width: 75%;
+  background-color: blue;
+  justify-self: flex-end;
+}
+
+/*
+***** Component: NavBar *****
+**/
+.component-navbar-wrapper {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 100%
+}
+
+.component-navbar-avatar_wrapper {
+  background-color: aliceblue;
+}
+
+.component-navbar-info_wrapper {
+  background-color: rgb(45, 118, 182)
+}
+
+.component-navbar-button_wrapper{
+  background-color: rgb(125, 211, 168)
+}
+
+/*
+***** Component: TodoList *****
+**/
+.component-todoList-wrapper {
+  overflow: auto
 }
