@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Authentication from './pages/Authentication';
 import Home from './pages/Home';
-
 
 class App extends Component {
   render() {
