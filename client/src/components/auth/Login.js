@@ -1,22 +1,57 @@
 import React, { Component } from 'react';
 import {
-  Form , Icon, Input, Button
+  Form , Icon, Input, Button, Alert
 } from 'antd';
 import { withRouter } from 'react-router-dom';
 import RegisterModal from './RegisterModal';
-import ForgotModal from './ForgotModal'
+import ForgotModal from './ForgotModal';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { login } from '../../actions/authActions';
+import { clearErrors } from '../../actions/errorActions';
 
 export class Login extends Component {
   state = {
     registerVisible: false,
     forgotVisible: false,
     email: '',
-    password: ''
+    password: '',
+    msg: null
   }
 
-  handleLogin = e => {
-    this.props.history.push('/Home')
+  static propTypes = {
+    isAuthenticated: PropTypes.bool,
+    error: PropTypes.object.isRequired,
+    login: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired
+  }
+
+  componentDidUpdate(prevProps) {
+    const { error } = this.props;
+    if(error !== prevProps.error) {
+      // Check for login error
+      if(error.id === 'LOGIN_FAIL') {
+        this.setState({ msg: error.msg.msg });
+      } else {
+        this.setState({ msg: null });
+      }
+    }
+  }
+
+  handleLogin = async e => {
+    e.preventDefault();
+
+    const { email, password } = this.state;
+    const { isAuthenticated } = this.props;
+
+    const user = {
+      email,
+      password
+    }
+
+    // Attemp to login
+    await this.props.login(user);
+    if (isAuthenticated) { await this.props.history.push('/Home') }
   }
 
   handleRegister = e => {
@@ -25,12 +60,21 @@ export class Login extends Component {
     })
   }
 
-  handleRegisterOk = e => {
-    // handle Register here - TBI
+  handleRegisterOk = async e => {
+    e.preventDefault();
 
-    this.setState({
-      registerVisible: false
-    })
+    const { name, email, password } = this.state;
+    const { isAuthenticated } = this.props;
+
+    // Create user object
+    const newUser = {
+      name,
+      email,
+      password
+    }
+
+    await this.props.register(newUser);
+    if (isAuthenticated) { this.props.history.push('/Home') }
   }
 
   handleRegisterCancel = e  => {
@@ -61,7 +105,6 @@ export class Login extends Component {
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value })
-    // console.log(`checked = ${e.target.checked}`);
   };
 
   render() {
@@ -71,17 +114,14 @@ export class Login extends Component {
         <RegisterModal
           visible={this.state.registerVisible}
           onCancel={this.handleRegisterCancel}
-          onOk={this.handleRegisterOk}
+          onOk={this.handleForgotOk}
         />
         <ForgotModal
           visible={this.state.forgotVisible}
           onCancel={this.handleForgotCancel}
-          onOk={this.handleForgotOk}
         />
-        <div className="auth-left">
-
-        </div>
-        <div className="auth-right" style={{ flex: 1}}>
+        <div className="auth-left"></div>
+        <div className="auth-right">
           <div className="auth-headerText">
             <strong>S I M PL E</strong><span>&nbsp;&nbsp;</span><strong>C</strong>
           </div>
@@ -89,10 +129,12 @@ export class Login extends Component {
             Welcome Back! Please login to your account
           </div>
           <Form className="login-form">
+            { this.state.msg ? <Alert type="error" message={this.state.msg}/> : null }
             <Form.Item label="Email">
               <Input
                 prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} type="email" placeholder="Email"
                 id="email"
+                name="email"
                 onChange={this.onChange}
                 onPressEnter={this.handleLogin}
               />
@@ -101,6 +143,7 @@ export class Login extends Component {
               <Input
                 prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password"
                 id="password"
+                name="password"
                 onChange={this.onChange}
                 onPressEnter={this.handleLogin}
               />
@@ -122,11 +165,14 @@ export class Login extends Component {
             </Form.Item>
           </Form>
         </div>
-
       </div>
-
     )
   }
 }
 
-export default withRouter(connect()(Login));
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error
+})
+
+export default withRouter(connect(mapStateToProps, { login, clearErrors })(Login));

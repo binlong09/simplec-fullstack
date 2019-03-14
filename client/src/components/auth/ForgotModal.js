@@ -33,7 +33,9 @@ export class RegisterModal extends Component {
         >
           <Form.Item>
             <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username"
+              prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email"
+              id="email"
+              name="email"
               onChange={this.onChange}
             />
           </Form.Item>
