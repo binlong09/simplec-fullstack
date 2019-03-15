@@ -22,6 +22,7 @@ mongoose
 
 // Use Routes
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/todos', require('./routes/api/todos'));
 app.use('/api/auth', require('./routes/api/auth'));
 
 // Serve static assets if in production

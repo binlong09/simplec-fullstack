@@ -13,6 +13,7 @@ function auth(req, res, next) { // the 3 parameters for middleware
     const decoded = jwt.verify(token, config.get('jwtSecret'));
     // Add user from payload
     req.user = decoded;
+    res.locals.user = req.user;
     next();
   } catch(e) {
     res.status(400).json({ msg: 'Token is not valid' });
