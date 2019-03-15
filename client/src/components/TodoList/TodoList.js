@@ -11,9 +11,23 @@ const data = [
 	'Los Angeles battles huge wildfires.',
 	'Racing car sprays burning fuel into crowd.',
   'Japanese princess to wed commoner.',
+	'Australian walks 100km after outback crash.',
+	'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
   'Australian walks 100km after outback crash.',
   'Man charged over missing wedding girl.',
 	'Los Angeles battles huge wildfires.',
+	'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
+	'Australian walks 100km after outback crash.',
+	'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
+  'Australian walks 100km after outback crash.',
+  'Man charged over missing wedding girl.',
+	'Los Angeles battles huge wildfires.',
+	'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
+	'Australian walks 100km after outback crash.',
 	'Racing car sprays burning fuel into crowd.',
   'Japanese princess to wed commoner.',
   'Australian walks 100km after outback crash.',
@@ -22,34 +36,11 @@ const data = [
 	'Racing car sprays burning fuel into crowd.',
   'Japanese princess to wed commoner.',
   'Australian walks 100km after outback crash.',
-  'Man charged over missing wedding girl.',
-	'Los Angeles battles huge wildfires.',
-	'Racing car sprays burning fuel into crowd.',
-  'Japanese princess to wed commoner.',
-  'Australian walks 100km after outback crash.',
-  'Man charged over missing wedding girl.',
-	'Los Angeles battles huge wildfires.',
-	'Racing car sprays burning fuel into crowd.',
-  'Japanese princess to wed commoner.',
-  'Australian walks 100km after outback crash.',
-  'Man charged over missing wedding girl.',
-	'Los Angeles battles huge wildfires.',
-	'Racing car sprays burning fuel into crowd.',
-  'Japanese princess to wed commoner.',
-  'Australian walks 100km after outback crash.',
-  'Man charged over missing wedding girl.',
-	'Los Angeles battles huge wildfires.',
-	'Racing car sprays burning fuel into crowd.',
-  'Japanese princess to wed commoner.',
-  'Australian walks 100km after outback crash.',
-  'Man charged over missing wedding girl.',
-  'Los Angeles battles huge wildfires.',
 ];
 
 const TodoList = () => {
 	return (
 		<div className = 'component-todoList-wrapper'>
-			<Sider>
 			<List
 				header={<div>Header</div>}
 				footer={<div>Footer</div>}
@@ -57,7 +48,6 @@ const TodoList = () => {
 				dataSource={data}
 				renderItem={item => (<List.Item><Typography.Text mark>[ITEM]</Typography.Text> {item}</List.Item>)}
 			/>
-			</Sider>
 		</div>
 	);
 };

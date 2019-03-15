@@ -57,11 +57,7 @@
 ***** Page: Home *****
 **/
 .home-navbar_wrapper {
-  display: flex;
-  width: 100%;
-  background-color: brown;
-  position: fixed;
-  z-index: 1
+  
 }
 
 .home-todoList_calendar_wrapper {
@@ -73,14 +69,16 @@
 }
 
 .home-todoList_wrapper {
-  width: 25%;
-  background-color: red;
+  position: fixed;
+  overflow: auto;
+  height: 100vh;
+  left: 0;
 }
 
 .home-calendar_wrapper {
-  width: 75%;
-  background-color: blue;
-  justify-self: flex-end;
+  background-color: black;
+  right: 0;  
+  width: 100%;
 }
 
 /*
@@ -92,7 +90,9 @@
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  width: 100%
+  width: 100%;
+  background-color: azure
+  
 }
 
 .component-navbar-avatar_wrapper {
@@ -111,5 +111,5 @@
 ***** Component: TodoList *****
 **/
 .component-todoList-wrapper {
-  overflow: auto
+
 }

@@ -5,16 +5,14 @@ import NavBar from '../components/NavBar/NavBar';
 import Calendar from '../components/Calendar/Calendar';
 import TodoList from '../components/TodoList/TodoList';
 
+import { Layout } from 'antd';
+
 export class Home extends Component {
   render() {
-    const { user, isAuthenticated } = this.props.auth;
-
+    const { Header, Sider, Content } = Layout;
     return (
       <div>
-        {/* { !isAuthenticated ? <Redirect to='/' />
-        :
-        <strong>{ user ? `Welcome ${user.name}` : ''}</strong>} */}
-        <div className = 'home-navbar_wrapper'>
+        {/* <div className = 'home-navbar_wrapper'>
           <NavBar />
         </div>
         <div className = 'home-todoList_calendar_wrapper'>
@@ -24,7 +22,27 @@ export class Home extends Component {
           <div className = 'home-calendar_wrapper'>
             <Calendar />
           </div>
-        </div>
+        </div> */}
+        <Layout >
+            <NavBar />
+          <Layout >
+            <Sider
+              className = 'home-todoList_wrapper'
+              width = {300}
+              theme = "light"
+            >
+              <TodoList />
+            </Sider>
+            <div className = 'home-calendar_wrapper' style = {{marginLeft: 300}}>
+            <Content>
+              <Calendar />
+            </Content>
+            </div>
+
+          </Layout>
+        </Layout>
+
+
       </div>
     )
   }

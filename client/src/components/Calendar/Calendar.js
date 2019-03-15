@@ -2,8 +2,8 @@ import React from 'react';
 
 const Calendar = () => {
 	return (
-		<div>
-			This is a calendar
+		<div className = 'component-calendar_wrapper'>
+			<h1 style = {{color: 'red'}}>This is a calewecwccccccccccccccccccccccccccccccccccccccccccccccccccccccndar</h1>
 		</div>
 	);
 };
