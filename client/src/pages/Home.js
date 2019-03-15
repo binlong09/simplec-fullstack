@@ -34,7 +34,7 @@ export class Home extends Component {
               <TodoList />
             </Sider>
             <div className = 'home-calendar_wrapper' style = {{marginLeft: 300}}>
-            <Content>
+            <Content style={{ height: "90%" }}>
               <Calendar />
             </Content>
             </div>

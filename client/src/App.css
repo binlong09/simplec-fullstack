@@ -57,7 +57,7 @@
 ***** Page: Home *****
 **/
 .home-navbar_wrapper {
-  
+
 }
 
 .home-todoList_calendar_wrapper {
@@ -76,9 +76,9 @@
 }
 
 .home-calendar_wrapper {
-  background-color: black;
-  right: 0;  
+  right: 0;
   width: 100%;
+  height: 95vh
 }
 
 /*
@@ -92,7 +92,7 @@
   align-items: center;
   width: 100%;
   background-color: azure
-  
+
 }
 
 .component-navbar-avatar_wrapper {
