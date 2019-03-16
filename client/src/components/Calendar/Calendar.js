@@ -26,7 +26,6 @@ let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
 
 export class Calendar extends Component {
 	render() {
-		console.log("events: " +  events);
 		return (
 			// <div className = 'component-calendar_wrapper'>
 			// 	<h1 style = {{color: 'red'}}>This is a calewecwccccccccccccccccccccccccccccccccccccccccccccccccccccccndar</h1>

@@ -4,8 +4,46 @@ import { Redirect } from 'react-router-dom'
 import NavBar from '../components/NavBar/NavBar';
 import Calendar from '../components/Calendar/Calendar';
 import TodoList from '../components/TodoList/TodoList';
+import { DragDropContext } from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 
 import { Layout } from 'antd';
+
+const data = [
+  'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
+  'Australian walks 100km after outback crash.',
+  'Man charged over missing wedding girl.',
+	'Los Angeles battles huge wildfires.',
+	'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
+	'Australian walks 100km after outback crash.',
+	'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
+  'Australian walks 100km after outback crash.',
+  'Man charged over missing wedding girl.',
+	'Los Angeles battles huge wildfires.',
+	'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
+	'Australian walks 100km after outback crash.',
+	'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
+  'Australian walks 100km after outback crash.',
+  'Man charged over missing wedding girl.',
+	'Los Angeles battles huge wildfires.',
+	'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
+	'Australian walks 100km after outback crash.',
+	'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
+  'Australian walks 100km after outback crash.',
+  'Man charged over missing wedding girl.',
+	'Los Angeles battles huge wildfires.',
+	'Racing car sprays burning fuel into crowd.',
+  'Japanese princess to wed commoner.',
+  'Australian walks 100km after outback crash.',
+];
+
 
 export class Home extends Component {
   render() {
@@ -31,7 +69,10 @@ export class Home extends Component {
               width = {300}
               theme = "light"
             >
-              <TodoList />
+            { data.map((item) => (
+              <TodoList item={item}/>
+            ))}
+
             </Sider>
             <div className = 'home-calendar_wrapper' style = {{marginLeft: 300}}>
             <Content style={{ height: "90%" }}>
@@ -51,5 +92,7 @@ export class Home extends Component {
 const mapStateToProps = state => ({
   auth: state.auth
 })
+
+Home = DragDropContext(HTML5Backend)(Home);
 
 export default connect(mapStateToProps, null)(Home);
