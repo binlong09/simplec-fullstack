@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+import 'fullcalendar/dist/fullcalendar.css';
+import 'fullcalendar/dist/fullcalendar.js';
+
+import $ from 'jquery';
+
+
 moment.locale('en-GB');
 
 const events = [
@@ -9,8 +14,8 @@ const events = [
     id: 0,
     title: 'All Day Event very long title',
     allDay: true,
-    start: new Date(2015, 3, 0),
-    end: new Date(2015, 3, 1),
+    start: new Date('2019-03-03T03:24:00')
+    // end: ,
   },
   {
     id: 1,
@@ -20,29 +25,27 @@ const events = [
   },
 ]
 
-const localizer = BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
-
-let allViews = Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k])
-
 export class Calendar extends Component {
 	render() {
-		return (
-			// <div className = 'component-calendar_wrapper'>
-			// 	<h1 style = {{color: 'red'}}>This is a calewecwccccccccccccccccccccccccccccccccccccccccccccccccccccccndar</h1>
-			// </div>
-			<div style={{ height: "100%" }}>
-				<BigCalendar
-				events={events}
-				views={allViews}
-				step={60}
-				showMultiDayTimes
-				// max={dates.add(dates.endOf(new Date(2015, 17, 1), 'day'), -1, 'hours')}
-				defaultDate={new Date(2015, 3, 1)}
-				localizer={localizer}
-			/>
-		</div>
-		)
+    return <div id="calendar"></div>;
+  }
+  componentDidMount() {
+    $('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			editable: true,
+			events: events,
+			droppable: true, // this allows things to be dropped onto the calendar
+			drop: function(date) {
+				$(this).remove();
+				console.log($(this).text())
+				console.log(date.format())
+			}
+		})
 	}
 }
 
-export default Calendar;
+export default Calendar

@@ -70,7 +70,7 @@
 
 .home-todoList_wrapper {
   position: fixed;
-  overflow: auto;
+  /* overflow: auto; */
   height: 100vh;
   left: 0;
 }

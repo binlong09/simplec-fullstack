@@ -1,52 +1,50 @@
 import React, { Component } from 'react';
 import { List, Typography, Layout } from 'antd';
-import { DragSource } from 'react-dnd';
+
+import moment from 'moment';
+
+import 'fullcalendar/dist/fullcalendar.css';
+import 'fullcalendar/dist/fullcalendar.js';
+
+import $ from 'jquery';
+import 'jquery-ui-bundle';
 
 const { Sider } = Layout;
-/**
- * Implements the drag source contract.
- */
-const cardSource = {
-  beginDrag(props) {
-    return {
-
-    };
-  }
-};
-
-/**
- * Specifies the props to inject into your component.
- */
-function collect(connect, monitor) {
-  return {
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-  };
-}
 
 export class TodoList extends Component {
 	render () {
-		const { isDragging, connectDragSource, item } = this.props;
-		console.log(this.props)
-		return connectDragSource(
-			<div>
+		const { item } = this.props;
+		return (
+			<div id='external-events'>
 				<List
-					// header={<div>Header</div>}
-					// footer={<div>Footer</div>}
 					bordered
-					// dataSource={data}
-					// renderItem={item => (<List.Item><Typography.Text mark>[ITEM]</Typography.Text> {item}</List.Item>)}
-					// renderItem={item}
 				>
-					<List.Item>
+				<div className='fc-event'>
+				<List.Item>
 						{item}
 					</List.Item>
+				</div>
 				</List>
-
-				{/* <h1>Helloooooooooo</h1> */}
 			</div>
 		);
 	}
+	componentDidMount() {
+		$('#external-events .fc-event').each(function() {
+			// store data so the calendar knows to render an event upon drop
+			$(this).data('event', {
+				title: $.trim($(this).text()), // use the element's text as the event title
+				stick: true // maintain when user navigates (see docs on the renderEvent method)
+			});
+
+			// make the event draggable using jQuery UI
+			$(this).draggable({
+				zIndex: 999,
+				revert: true,      // will cause the event to go back to its
+				revertDuration: 0  //  original position after the drag
+			});
+		});
+  }
+
 };
 
-export default DragSource('todolist', cardSource, collect)(TodoList);
+export default TodoList;

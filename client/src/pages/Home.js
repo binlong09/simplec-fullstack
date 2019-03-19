@@ -44,6 +44,21 @@ const data = [
   'Australian walks 100km after outback crash.',
 ];
 
+const events = [
+  {
+    title: 'Do nothing',
+    start: '2019-03-06T12:30:00',
+    // end: '2019-03-08',
+    allday: false
+  },
+  {
+    title: 'Do nothing1',
+    start: '2019-03-06T01:30:00',
+    // end: '2019-03-08',
+    allday: false
+  }
+]
+
 
 export class Home extends Component {
   render() {
@@ -69,14 +84,14 @@ export class Home extends Component {
               width = {300}
               theme = "light"
             >
-            { data.map((item) => (
+            { data.map(item => (
               <TodoList item={item}/>
             ))}
 
             </Sider>
             <div className = 'home-calendar_wrapper' style = {{marginLeft: 300}}>
             <Content style={{ height: "90%" }}>
-              <Calendar />
+              <Calendar events={events}/>
             </Content>
             </div>
 
