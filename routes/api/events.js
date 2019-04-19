@@ -34,7 +34,6 @@ router.get('/', auth, (req, res) => {
         });
       });
     });
-    // .then(events => res.json(events));
 });
 
 // @route   POST api/events
@@ -45,6 +44,8 @@ router.post('/', auth, (req, res) => {
     _user: res.locals.user.id,
     _event: req.body._event,
     title: req.body.title,
+    start: req.body.start,
+    allDay: req.body.allDay,
     description: req.body.description
   });
 

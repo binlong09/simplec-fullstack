@@ -20,6 +20,14 @@ const Eventchema = new Schema({
   description: {
     type: String
   },
+  start: {
+    type: Date,
+    required: true
+  },
+  allDay: {
+    type: Boolean,
+    default: true
+  },
   created_at: {
     type: Date,
     default: Date.now
