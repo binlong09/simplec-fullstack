@@ -23,7 +23,7 @@ export const getEvents = () => dispatch => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
-      'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjODgxODNhMzcwNDkzOWVjMGM0OTE5OCIsImlhdCI6MTU1NjQ3MzY3MSwiZXhwIjoxNTU2NDc3MjcxfQ.jbp1wBSygY_z0w1SEDdkhrWia2_9VpnyABh4UZZe_lI'
+      'x-auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjODgxODNhMzcwNDkzOWVjMGM0OTE5OCIsImlhdCI6MTU1NzQ1NTg3NCwiZXhwIjoxNTU3NDU5NDc0fQ.rf7Nu8C7FscwtI_qJvsNsZzHEEKmpVTRVegHN-oA4OA'
     }
   }
 
